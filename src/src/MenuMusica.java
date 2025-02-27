@@ -1,6 +1,10 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuMusica {
+
+    private static List<Musica> listaMusicas = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -30,7 +34,7 @@ public class MenuMusica {
                     Incluir(sc);
                     break;
                 case '2':
-                    System.out.println("Opção 'Listar' selecionada");
+                    Listar();
                     break;
                 case '3':
                     System.out.println("Opção 'Alterar' selecionada");
@@ -70,15 +74,26 @@ public class MenuMusica {
         String generoMusica = sc.nextLine();
 
         Musica m = new Musica(titulo, artista, duracao, generoMusica);
+        listaMusicas.add(m);
+
 
         System.out.print("\nMúsica criada e salva!\n");
 
-        System.out.println("\n🎵 Música cadastrada com sucesso!");
-        System.out.println("Título: " + titulo);
-        System.out.println("Artista: " + artista);
-        System.out.println("Duração: " + duracao + " min");
-        System.out.println("Gênero: " + generoMusica+ ".\n\n");
+    }
+    private static void Listar(){
+        if (listaMusicas.isEmpty()) {
+            System.out.println("\n📂 Nenhuma música cadastrada.\n");
+            return;
+        }
+
+        System.out.println("\n🎶 LISTA DE MÚSICAS CADASTRADAS 🎶\n");
+        for (int i = 0; i < listaMusicas.size(); i++) {
+            Musica m = listaMusicas.get(i);
+            System.out.println((i + 1) + ". " + m);
+        }
+        System.out.println();
 
     }
+
 
 }
