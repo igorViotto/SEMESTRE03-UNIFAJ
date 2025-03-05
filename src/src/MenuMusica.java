@@ -73,26 +73,29 @@ public class MenuMusica {
         System.out.println("Gênero da música: ");
         String generoMusica = sc.nextLine();
 
-        Musica m = new Musica(titulo, artista, duracao, generoMusica);
-        listaMusicas.add(m);
+        // todo, CRIANDO UM NOVO OBJETO MUSICA.
+        //QUANDO TODAS AS ENTRADAS dos SOUT FOREM ARMAZENADOS, SERÁ CRIADA UMA NOVA MUSICA.
+        Musica novaMusica = new Musica(titulo, artista, duracao, generoMusica);
+
+        //todo, Adicionamos a 'novaMuisca' a LISTA 'listaMusica'.
+        listaMusicas.add(novaMusica);
 
 
         System.out.print("\nMúsica criada e salva!\n");
 
     }
     private static void Listar(){
-        if (listaMusicas.isEmpty()) {
-            System.out.println("\n📂 Nenhuma música cadastrada.\n");
+        int i = 0;
+        if (listaMusicas.isEmpty()){
+            System.out.println("\nNenhuma música cadastrada.\n");
             return;
         }
+        System.out.println("\nLISTA DE MÚSICAS CADASTRADAS:\n");
 
-        System.out.println("\n🎶 LISTA DE MÚSICAS CADASTRADAS 🎶\n");
-        for (int i = 0; i < listaMusicas.size(); i++) {
-            Musica m = listaMusicas.get(i);
-            System.out.println((i + 1) + ". " + m);
+        for (Musica musica : listaMusicas){
+            System.out.println(i + 1);
+            musica.exibirDetalhes();
         }
-        System.out.println();
-
     }
 
 
